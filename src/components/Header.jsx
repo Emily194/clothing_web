@@ -2,13 +2,13 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-function Header() {
+function Header({ cartCount }) {
   return (
     <header className="header">
       <div className="logo">
-        <a href="/" title="go to homepage">
-          Hola
-        </a>
+        <Link to="/" title="go to homepage">
+          Home
+        </Link>
       </div>
       <nav className="nav-links">
         <Link to="/women">Women</Link>
@@ -16,11 +16,10 @@ function Header() {
         <Link to="/shoes">Shoes</Link>
         <Link to="/accessories">Accessories</Link>
       </nav>
-
       <nav className="account">
-        <Link to="/signup">Sign Up</Link>
+        <Link to="/login">Log In</Link>
         <Link to="/cart">
-          Cart (<span id="cartCount">0</span>)
+          Cart (<span id="cartCount">{cartCount}</span>)
         </Link>
       </nav>
     </header>
