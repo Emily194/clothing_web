@@ -1,0 +1,35 @@
+/* src/components/Header.css */
+.header {
+  display: flex; /* Use flexbox for layout */
+  justify-content: space-between; /* Space between logo and nav links */
+  align-items: center; /* Center items vertically */
+  padding: 10px 20px; /* Padding around the header */
+  background-color: #007bff; /* Header background color */
+  color: white; /* Text color */
+}
+
+.logo {
+  font-size: 1.5rem; /* Logo font size */
+}
+
+.nav-links {
+  display: flex; /* Flex layout for navigation links */
+  gap: 20px; /* Space between links */
+}
+
+.nav-links a,
+.account a {
+  color: white; /* Link color */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.nav-links a:hover,
+.account a:hover {
+  color: #ffd700; /* Change color on hover */
+}
+
+.account {
+  display: flex; /* Flex layout for account section */
+  gap: 20px; /* Space between account links */
+}
