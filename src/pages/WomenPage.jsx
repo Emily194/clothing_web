@@ -5,21 +5,21 @@ const WomenPage = ({ addToCart }) => {
   const products = [
     {
       id: 1,
-      name: "Dress 1",
+      name: "Women Clothing 1",
       image: "/women1.png", // Ensure these images exist in your public folder
-      price: 29.99, // Price for Dress 1
+      price: 29.99, // Price for Women Clothing 1
     },
     {
       id: 2,
-      name: "Dress 2",
+      name: "Women Clothing 2",
       image: "/women2.png",
-      price: 39.99, // Price for Dress 2
+      price: 39.99, // Price for Women Clothing 2
     },
     {
       id: 3,
-      name: "Dress 3",
+      name: "Women Clothing 3",
       image: "/women3.png",
-      price: 49.99, // Price for Dress 3
+      price: 49.99, // Price for Women Clothing 3
     },
   ];
 

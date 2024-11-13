@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SignupPage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -73,39 +73,38 @@ export default function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const isValid = validateForm();
     if (!isValid) {
       alert("Please correct the errors before submitting the form");
       return;
     }
-
-    const {confirmPassword, ...data} = formData;
-    console.log(data);
-
+  
+    const { username, email, phoneNumber, password } = formData;
+  
     try {
       const response = await fetch("http://localhost:8000/signup.php", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: data,
+        body: JSON.stringify({ username, email, phoneNumber, password }),
       });
-
+  
+      const data = await response.json(); // Parse the JSON response
+  
       if (!response.ok) {
-        const errorData = await response.json();
-        alert(errorData.message || "Signup failed!");
+        alert("Signup failed!");
         return;
       }
-
-      alert("User signed up successfully!");
+  
+      alert("Signup successful!"); // Use data.message from the response
       navigate("/login");
     } catch (error) {
       console.error("Error during signup:", error);
       alert("An error occurred. Please try again.");
     }
   };
-
   return (
     <div className="login-container">
       <h2>We can't wait to have you join us &#128420;</h2>
@@ -175,7 +174,6 @@ export default function SignUp() {
         )}
 
         <input id="sign-up" type="submit" value="Submit" />
-        <Link to="/forget-password">Forget Password?</Link>
       </form>
     </div>
   );

@@ -14,7 +14,6 @@ function Header({ cartCount, loggedInEmail, handleLogout }) {
         <Link to="/women">Women</Link>
         <Link to="/men">Men</Link>
         <Link to="/shoes">Shoes</Link>
-        <Link to="/accessories">Accessories</Link>
       </nav>
       <nav className="account">
         <Link to="/cart">

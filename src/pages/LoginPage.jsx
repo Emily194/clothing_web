@@ -32,12 +32,18 @@ const LoginPage = ({ handleLogin }) => {
 
       const data = await response.json();
 
-      console.log(data);
+      const { email } = data; // Destructure email from the response
+      login({ email }); // Call the login function with email
+
+      if (email === "") {
+        alert("Invalid username and password.");
+        return;
+      }
 
       if (response.ok) {
         const { email } = data; // Destructure email from the response
         login({ email }); // Call the login function with email
-        alert("Logged in!");
+        alert(data.message);
         handleLogin(email); // Call the handleLogin function passed as a prop
         navigate("/home"); // Redirect to home page
       } else {
