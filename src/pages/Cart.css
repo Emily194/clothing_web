@@ -1,0 +1,43 @@
+/* src/pages/Cart.css */
+.cart-container {
+  padding: 20px; /* Padding around the cart */
+  background-color: #f9f9f9; /* Light background for cart */
+  border: 1px solid #ccc; /* Border around cart */
+  border-radius: 8px; /* Rounded corners */
+  max-width: 600px; /* Limit width */
+  margin: 20px auto; /* Center cart on page */
+}
+
+.cart-items {
+  list-style: none; /* Remove list bullets */
+  padding: 0; /* Remove padding */
+}
+
+.cart-item {
+  padding: 10px; /* Padding for each item */
+  border-bottom: 1px solid #eee; /* Divider between items */
+}
+
+.cart-item:last-child {
+  border-bottom: none; /* Remove border from last item */
+}
+
+.cart-total {
+  margin-top: 15px; /* Space above total */
+  font-size: 1.2rem; /* Larger font for total */
+}
+
+.checkout-button {
+  margin-top: 10px; /* Space above button */
+  padding: 10px 20px; /* Button padding */
+  background-color: #007bff; /* Button color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.checkout-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
