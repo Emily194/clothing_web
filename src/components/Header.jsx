@@ -2,7 +2,7 @@ import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 
-function Header({ cartCount }) {
+function Header({ cartCount, loggedInEmail, handleLogout }) {
   return (
     <header className="header">
       <div className="logo">
@@ -17,10 +17,16 @@ function Header({ cartCount }) {
         <Link to="/accessories">Accessories</Link>
       </nav>
       <nav className="account">
-        <Link to="/login">Log In</Link>
         <Link to="/cart">
           Cart (<span id="cartCount">{cartCount}</span>)
         </Link>
+        {loggedInEmail ? (
+          <Link onClick={handleLogout}>
+            Log Out
+          </Link>
+        ) : (
+          <Link to="/login">Log In</Link>
+        )}
       </nav>
     </header>
   );

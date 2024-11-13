@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { useNavigate, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -12,20 +12,20 @@ import SignUpPage from "./pages/SignupPage";
 import WomenPage from "./pages/WomenPage";
 
 function App() {
-  const [userDetails, setUserDetails] = useState(null);
-  const [users, setUsers] = useState([]);
-  const [cart, setCart] = useState([]);
+  const navigate = useNavigate();
 
-  const handleSignup = (details) => {
-    setUserDetails(details);
-    setUsers((prevUsers) => [...prevUsers, details]);
-    console.log("User Details:", details);
+  const [cart, setCart] = useState([]);
+  const [loggedInEmail, setLoggedInEmail] = useState("");
+
+  const handleLogin = (email) => {
+    setLoggedInEmail(email);
+    navigate("/home");
+    console.log(email);
   };
 
-  const validateUser = (username, password) => {
-    return users.some(
-      (user) => user.username === username && user.password === password
-    );
+  const handleLogout = () => {
+    setLoggedInEmail("");
+    navigate("/home");
   };
 
   const addToCart = (product) => {
@@ -39,27 +39,33 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header cartCount={cart.length} /> {/* Pass cart count to Header */}
+      <Header
+        cartCount={cart.length}
+        loggedInEmail={loggedInEmail}
+        handleLogout={handleLogout}
+      />
       <main className="main-content">
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
-          <Route
-            path="/signup"
-            element={<SignUpPage onSignup={handleSignup} />}
-          />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route
             path="/cart"
-            element={<Cart cart={cart} clearCart={clearCart} />}
-          />{" "}
-          {/* Pass clearCart to Cart */}
+            element={
+              <Cart
+                cart={cart}
+                clearCart={clearCart}
+                userEmail={loggedInEmail}
+              />
+            }
+          />
           <Route
             path="/login"
-            element={<LoginPage validateUser={validateUser} />}
+            element={<LoginPage handleLogin={handleLogin} />}
           />
-          <Route path="/men" element={<MenPage />} />
+          <Route path="/men" element={<MenPage addToCart={addToCart} />} />
           <Route path="/women" element={<WomenPage addToCart={addToCart} />} />
-          <Route path="/shoes" element={<ShoesPage />} />
+          <Route path="/shoes" element={<ShoesPage addToCart={addToCart} />} />
         </Routes>
       </main>
       <Footer />
