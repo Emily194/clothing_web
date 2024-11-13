@@ -1,0 +1,28 @@
+/* ShoesPage.css */
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center products */
+  gap: 20px; /* Spacing between products */
+  margin-top: 20px; /* Space above the grid */
+}
+
+.product-card {
+  cursor: pointer; /* Show pointer on hover */
+  text-align: center; /* Center text under images */
+  border: 1px solid #ccc; /* Border around product */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Padding inside card */
+  transition: transform 0.2s; /* Animation on hover */
+}
+
+.product-card:hover {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.product-image {
+  width: 150px; /* Set image width */
+  height: 150px; /* Set image height */
+  object-fit: cover; /* Cover the area */
+  border-radius: 4px; /* Rounded corners for images */
+}
